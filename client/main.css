@@ -1,0 +1,7 @@
+/* CSS declarations go here */
+#login-buttons a {
+    color: #423838;
+    display: block;
+    margin-top: 17px;
+    text-decoration: none;
+}

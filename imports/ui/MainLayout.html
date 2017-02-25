@@ -1,0 +1,15 @@
+<template name="MainLayout">
+	<header id="header" class="">
+		<div class="container">
+    {{>navbar}} 
+  </div>
+  
+	</header><!-- /header -->
+	<main>
+		{{> Template.dynamic template=main}}
+	</main>
+</template>
+
+<template name="Test">
+	<h2>test</h2>
+</template>
