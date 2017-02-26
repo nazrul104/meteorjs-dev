@@ -13,15 +13,16 @@
         {{> task}}
       {{/each}}
     </ul>
+    {{currentUser}}
   </div>
 </template>
 
 <template name="task">
   <li class="{{#if checked}}checked{{/if}}">
     <button class="delete">&times;</button>
- 
     <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
- 
     <span class="text">{{text}}</span>
+    <span class="text">{{userId}}</span>
+
   </li>
 </template>
