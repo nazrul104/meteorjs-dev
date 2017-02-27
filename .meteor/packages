@@ -26,3 +26,6 @@ accounts-ui
 accounts-password
 accounts-facebook
 accounts-google
+aldeed:simple-schema
+aldeed:collection2
+aldeed:autoform
