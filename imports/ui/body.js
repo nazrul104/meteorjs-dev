@@ -1,34 +1,33 @@
 import { Meteor } from 'meteor/meteor';
+import { ReactiveDict } from 'meteor/reactive-dict';
 import { Template } from 'meteor/templating';
 import { Tasks } from '../api/tasks.js';
+
+
 import './body.html';
  
+ Template.body.onCreated(function bodyOnCreated() {
+ this.state = new ReactiveDict();
+  Meteor.subscribe('tasks');
+});
+if (Meteor.isClient) {
 Template.task1.helpers({
   tasks() {
-       return Tasks.find({userId:Meteor.userId()});
+     return Tasks.find({userId:Meteor.userId()});
   },
-  currentUser: function() {
-    return Meteor.userId();
-  }
+  isOwner() {
+    return this.owner === Meteor.userId();
+  },
 });
 
 Template.task1.events({
   'submit .new-task'(event) {
     // Prevent default browser form submit
     event.preventDefault();
-    // Get value from form element
     const target = event.target;
     const text = target.text.value;
-    if (Meteor.userId()) {
-      var userId = Meteor.userId();
-    }
     // Insert a task into the collection
-    Tasks.insert({
-      text,
-      userId,
-      createdAt: new Date(), // current time
-    });
- 
+    Meteor.call('addTask', text);
     // Clear form
     target.text.value = '';
   },
@@ -37,11 +36,10 @@ Template.task1.events({
 Template.task.events({
   'click .toggle-checked'() {
     // Set the checked property to the opposite of its current value
-    Tasks.update(this._id, {
-      $set: { checked: ! this.checked },
-    });
+    Meteor.call('setChecked', this._id, !this.checked);
   },
   'click .delete'() {
-    Tasks.remove(this._id);
+    Meteor.call('removeTask', this._id);
   },
 });
+}

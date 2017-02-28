@@ -1,4 +1,6 @@
+import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
+import { check } from 'meteor/check';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 export const Rent = new Mongo.Collection('rent');
 
@@ -66,11 +68,35 @@ var rentschema = new SimpleSchema({
   createdAt: {
     type: Date,
   },
+  userId:{
+    type: String
+  },
   is_active: {
     type: Boolean,
-    defaultValue: false,
+    defaultValue: true,
   }
 });
 
 Rent.attachSchema(rentschema);
+if (Meteor.isServer) {
+  Meteor.publish('rent',function() {
+    return Rent.find();
+  });
+  Meteor.methods({
+  addRent:function(data) {
+    console.log(data);
+    Rent.insert(data);
+  },
+  removeRent:function(taskId) {
+    check(taskId, String);
+    Tasks.remove(taskId);
+  },
+/*  setChecked:function(taskId, setChecked) {
+    check(taskId, String);
+    check(setChecked, Boolean);
+    Rent.update(taskId, { $set: { checked: setChecked } });
+  },*/
+});
+
+}
 
