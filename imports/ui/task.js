@@ -28,18 +28,22 @@ Template.allTask.events({
     const target = event.target;
     const text = target.text.value;
     // Insert a task into the collection
-    Meteor.call('addTask', text);
+    Meteor.call('addTask', text,function(err,res){
+      if(!err)
+      target.text.value = '';
+    });
     // Clear form
-    target.text.value = '';
+    
   },
 });
 
 Template.task.events({
-  'click .toggle-checked'() {
+  'click .toggle'() {
     // Set the checked property to the opposite of its current value
+     $('#'+this._id).addClass("completed");
     Meteor.call('setChecked', this._id, !this.checked);
   },
-  'click .btn-danger'() {
+  'click .destroy'() {
     Meteor.call('removeTask', this._id);
   },
 });

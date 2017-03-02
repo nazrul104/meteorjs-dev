@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { Template } from 'meteor/templating';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Rent } from '../api/rent.js';
 import './rent-list.html';
 import './rent-form.html';
@@ -22,7 +23,10 @@ Template.rent.helpers({
 });
 
 Template.updateRent.helpers({
-
+getRentInfoById(){
+var current = FlowRouter.current();
+return Rent.findOne({_id:current.params.rid});
+}
 });
 
 Template.addRent.events({
@@ -31,7 +35,6 @@ Template.addRent.events({
     event.preventDefault();
     // Get value from form element
     const post_title = event.target.post_title.value;
-
     const summary = event.target.summary.value;
     const property_type = event.target.property_type.value;
     const Accommodates = event.target.Accommodates.value;
@@ -47,19 +50,45 @@ Template.addRent.events({
     const postcode = event.target.postcode.value;
     //const is_active = event.target.is_active.value;
     var data = {post_title,summary,property_type,Accommodates,Bedrooms,beds,Bathrooms,check_in,check_out,room_type,available_from,available_to,address,postcode,createdAt: new Date(),userId:Meteor.userId()};
-    Meteor.call('addRent',data);
+    Meteor.call('addRent',data,function(err,res){
+      if (!err) {
+        reset(event.target);
+      }
+    });
 
     // Clear form
 //    target.post_title.value = '';
   },
 });
 
-Template.rent.events({
-  'click #edit'() {
-    
+Template.updateRent.events({
+  'click .update-rent'(event) {
+       // Prevent default browser form submit
+    event.preventDefault();
+    const post_title = event.target.post_title.value;
+    const summary = event.target.summary.value;
+    const property_type = event.target.property_type.value;
+    const Accommodates = event.target.Accommodates.value;
+    const Bedrooms = event.target.Bedrooms.value;
+    const beds = event.target.beds.value;
+    const Bathrooms = event.target.Bathrooms.value;
+    const check_in = event.target.check_in.value;
+    const check_out = event.target.check_out.value;
+    const room_type = event.target.room_type.value;
+    const available_from = event.target.available_from.value;
+    const available_to = event.target.available_to.value;
+    const address = event.target.address.value;
+    const postcode = event.target.postcode.value;
   },
   'click #delete'() {
     console.log(this._id);
     Meteor.call('removeRent', this._id);
   },
 });
+
+function reset(target){
+  target.post_title.value = "";
+  target.summary.value = "";
+  target.property_type.value = "";
+  target.Accommodates.value = ""; 
+}

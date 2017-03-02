@@ -10,13 +10,6 @@ Template.userList.helpers({
     return Meteor.users.find()
   },
   email: function () {
-    return this.emails[0].address
-  },
-  roles: function () {
-    if (!this.roles) {
-      return '<none>'
-    }
-
-    return this.roles.join(',')
+    return this.user[0].address
   }
 })

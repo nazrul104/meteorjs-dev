@@ -89,6 +89,10 @@ if (Meteor.isServer) {
   addRent:function(data) {
      Rent.insert(data);
   },
+  getById: function(id){
+    check(id, String);
+    Rent.findOne({_id:id});
+  },
   removeRent:function(id) {
     check(id, String);
     Rent.remove(id);

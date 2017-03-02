@@ -9,10 +9,8 @@ if (Meteor.isServer) {
    console.log(Meteor.users.find().fetch());
     if (Meteor.users.find().fetch().length === 0) {
     var users = [
-    /*  {name:"Jone",email:"jone@example.com",roles:[]},
-      {name:"Smith",email:"sm@example.com",roles:['developer']},
-      {name:"tester",email:"tester@example.com",roles:['tester']},*/
-      {name:"Admin",email:"admin2@example.com",roles:['admin']}
+      {name:"Jone",email:"jone@example.com",roles:[]},
+      {name:"Admin",email:"admin@example.com",roles:['admin']}
     ];
 
 _.each(users, function (user) {

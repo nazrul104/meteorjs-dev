@@ -28,6 +28,7 @@
     <div class="navbar-inner">
       <div class="container">
         <a class="brand" href="/">Meteorjs-demo</a>
+        {{> loginButtons}}
         {{#if currentUser}}
         <ul class="nav navbar-nav navbar-right">
         <li><a href="/">Home</a></li>
@@ -37,9 +38,7 @@
           {{/if}}
       </ul>
         {{/if}}
-        <ul class="nav navbar-nav navbar-right">
-          <li>{{> loginButtons}}</li>
-        </ul>
+      
       </div>
     </div>
   </nav>
