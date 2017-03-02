@@ -1,10 +1,10 @@
-<template name="MainLayout">
+<!-- <template name="MainLayout">
 	<header id="header" class="">
 		<div class="container">
     {{>navbar}} 
   </div>
   
-	</header><!-- /header -->
+	</header>
 	<main>
 		{{> Template.dynamic template=main}}
 	</main>
@@ -12,4 +12,24 @@
 
 <template name="Test">
 	<h2>test</h2>
+</template>
+ -->
+
+<template name="MainLayout">
+  {{> navbar}}
+  {{#if currentUser}}
+      {{> Template.dynamic template=content}}
+  {{else}}
+    {{#if loggingIn}}
+      {{> loading}}
+    {{else}}
+      {{> signin}}
+    {{/if}}
+  {{/if}}
+</template>
+
+<template name="noHeaderLayout">
+  {{> Template.dynamic template=content}}
+
+  <div id="log"></div>
 </template>

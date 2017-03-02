@@ -52,7 +52,10 @@ var rentschema = new SimpleSchema({
   },
   available_from:{
   	type: String,
-    max: 100,
+    optional: true,
+  },
+  available_to:{
+    type: String,
     optional: true,
   },
   address: {
@@ -84,18 +87,16 @@ if (Meteor.isServer) {
   });
   Meteor.methods({
   addRent:function(data) {
-    console.log(data);
-    Rent.insert(data);
+     Rent.insert(data);
   },
-  removeRent:function(taskId) {
-    check(taskId, String);
-    Tasks.remove(taskId);
+  removeRent:function(id) {
+    check(id, String);
+    Rent.remove(id);
   },
-/*  setChecked:function(taskId, setChecked) {
-    check(taskId, String);
-    check(setChecked, Boolean);
-    Rent.update(taskId, { $set: { checked: setChecked } });
-  },*/
+ updateRent:function(id, data) {
+    check(id, String);
+    Rent.update(id, { $set: data });
+  },
 });
 
 }

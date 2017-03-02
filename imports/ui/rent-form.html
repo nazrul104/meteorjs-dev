@@ -1,111 +1,73 @@
- <template name="rent">
-  <div class="container">
-    <header>
-    {{#each AllRent}}
-        {{post_title}}
-      {{/each}}
-
+<template name="addRent">
+<div class="container">
       <h3>Add Your Property Information</h3>
        <div class="new-rent-container">
-           <!--  {{> quickForm collection =insertRentCollection id="insertRentInfo" type="insert" class="new-rent"}} -->
-           <form id="insertRentInfo" class="new-rent" novalidate="novalidate">
-   <!-- <div class="form-group" data-required="true">
-      <label for="cZzW5KSfuaRvsKAmE" class="control-label">ID</label>
-      <input type="text" name="_id" id="cZzW5KSfuaRvsKAmE" required="" data-schema-key="_id" class="form-control">
-      <span class="help-block"></span>
-   </div> -->
+           <form id="insertRentInfo" method="post" class="new-rent form-horizontal" novalidate="novalidate">
    <div class="form-group">
       <label for="HE9ywQ7NbaMXzWaBP" class="control-label">Post title</label>
       <input type="text" name="post_title" id="HE9ywQ7NbaMXzWaBP" data-schema-key="post_title" maxlength="100" class="form-control">
-      <span class="help-block"></span>
    </div>
    <div class="form-group">
       <label for="2mhsujM89WBjWTrio" class="control-label">Summary</label>
       <input type="text" name="summary" id="2mhsujM89WBjWTrio" data-schema-key="summary" maxlength="256" class="form-control">
-      <span class="help-block"></span>
    </div>
    <div class="form-group">
       <label for="ZNTg8mujdL4QSKDfa" class="control-label">Property type</label>
       <input type="text" name="property_type" id="ZNTg8mujdL4QSKDfa" data-schema-key="property_type" maxlength="10" class="form-control">
-      <span class="help-block"></span>
    </div>
    <div class="form-group" data-required="true">
       <label for="WGAY9vnkQjYHjKF3x" class="control-label">Accommodates</label>
-      <input type="number" name="Accommodates" id="WGAY9vnkQjYHjKF3x" required="" data-schema-key="Accommodates" class="form-control">
-      <span class="help-block"></span>
+      <input type="number" name="Accommodates" id="WGAY9vnkQjYHjKF3x" placeholder="Number of person" required="" data-schema-key="Accommodates" class="form-control">
    </div>
    <div class="form-group" data-required="true">
       <label for="k7rX7jQMC2i6sHKGB" class="control-label">Bedrooms</label>
-      <input type="number" name="Bedrooms" id="k7rX7jQMC2i6sHKGB" required="" data-schema-key="Bedrooms" class="form-control">
-      <span class="help-block"></span>
+      <input type="number" name="Bedrooms" id="k7rX7jQMC2i6sHKGB" required="" placeholder="Number of Bed Rooms" data-schema-key="Bedrooms" class="form-control">
    </div>
    <div class="form-group" data-required="true">
       <label for="LpG4KabvApZ5rhwAc" class="control-label">Beds</label>
-      <input type="number" name="beds" id="LpG4KabvApZ5rhwAc" required="" data-schema-key="beds" class="form-control">
-      <span class="help-block"></span>
+      <input type="number" name="beds" id="LpG4KabvApZ5rhwAc" required="" placeholder="Number of Beds" data-schema-key="beds" class="form-control">
    </div>
    <div class="form-group" data-required="true">
       <label for="q8dy6aqqQJjnWqmae" class="control-label">Bathrooms</label>
-      <input type="number" name="Bathrooms" id="q8dy6aqqQJjnWqmae" required="" data-schema-key="Bathrooms" class="form-control">
-      <span class="help-block"></span>
+      <input type="number" name="Bathrooms" id="q8dy6aqqQJjnWqmae" required="" placeholder="Number of Bath rooms" data-schema-key="Bathrooms" class="form-control">
    </div>
    <div class="form-group" data-required="true">
-      <label for="wHoHZ6b9aSrosLbiu" class="control-label">Check in</label>
-      <input type="text" name="check_in" id="wHoHZ6b9aSrosLbiu" required="" data-schema-key="check_in" class="form-control">
-      <span class="help-block"></span>
+      <label for="wHoHZ6b9aSrosLbiu" class="control-label">Check in time</label>
+      <input type="time" name="check_in" id="wHoHZ6b9aSrosLbiu" required="" placeholder="Check in time:10:00 PM" data-schema-key="check_in" class="form-control">
    </div>
    <div class="form-group" data-required="true">
-      <label for="73ZFsM9BFXGvjMaMn" class="control-label">Check out</label>
-      <input type="text" name="check_out" id="73ZFsM9BFXGvjMaMn" required="" data-schema-key="check_out" class="form-control">
-      <span class="help-block"></span>
+      <label for="73ZFsM9BFXGvjMaMn" class="control-label">Check out time</label>
+      <input type="time" name="check_out" id="73ZFsM9BFXGvjMaMn" required="" placeholder="Check out Time: 3:00 PM" data-schema-key="check_out" class="form-control">
    </div>
    <div class="form-group" data-required="true">
       <label for="ChNxDoD8afuRaDSAB" class="control-label">Room type</label>
-      <input type="text" name="room_type" id="ChNxDoD8afuRaDSAB" required="" data-schema-key="room_type" class="form-control">
-      <span class="help-block"></span>
+      <input type="text" name="room_type" id="ChNxDoD8afuRaDSAB" required="" placeholder="example:private" data-schema-key="room_type" class="form-control">
    </div>
    <div class="form-group">
-      <label for="C7RbvJvdH2mxK2q8E" class="control-label">Available from</label>
+      <label for="C7RbvJvdH2mxK2q8E" class="control-label">Available from (Date)</label>
       <input type="date" name="available_from" id="C7RbvJvdH2mxK2q8E" data-schema-key="available_from" maxlength="100" class="form-control">
-      <span class="help-block"></span>
+   </div>
+   <div class="form-group">
+      <label for="C7RbvJvdH2mxK2q8E" class="control-label">Available to (Date)</label>
+      <input type="date" name="available_to" id="C7RbvJvdH2mxK2q8E" data-schema-key="available_from" maxlength="100" class="form-control">
    </div>
    <div class="form-group">
       <label for="hoCAMf9Axs56qhCsc" class="control-label">Address</label>
       <input type="text" name="address" id="hoCAMf9Axs56qhCsc" data-schema-key="address" maxlength="100" class="form-control">
-      <span class="help-block"></span>
    </div>
    <div class="form-group">
       <label for="uk6E2i7kEfEw7vvyu" class="control-label">Postcode</label>
       <input type="text" name="postcode" id="uk6E2i7kEfEw7vvyu" data-schema-key="postcode" maxlength="100" class="form-control">
-      <span class="help-block"></span>
    </div>
-<!--    <div class="form-group" data-required="true">
-      <label for="g8GLsncCoddL5ex6e" class="control-label">Created at</label>
-      <input type="date" name="createdAt" id="g8GLsncCoddL5ex6e" required="" data-schema-key="createdAt" class="form-control">
-      <span class="help-block"></span>
-   </div> -->
-   <!-- <div class="form-group" data-required="true">
-      <label for="Q7nFc4zmv8Eo7Y4Zt" class="control-label">User id</label>
-      <input type="text" name="userId" id="Q7nFc4zmv8Eo7Y4Zt" required="" data-schema-key="userId" class="form-control">
-      <span class="help-block"></span>
-   </div> -->
-  <!--  <div class="form-group" data-required="true">
-      <div class="checkbox">
-         <label>
-         <input type="checkbox" value="true" name="is_active" id="cbDQQfr5JEDmbW8CS" data-schema-key="is_active">
-         Is active
-         </label>
-      </div>
-      <span class="help-block"></span>
-   </div> -->
    <div class="form-group">
-      <button type="submit" class="btn btn-primary">
-      Submit
+      <button type="submit" id="addNow" class="btn btn-primary">
+      Publish
       </button>
    </div>
 </form>
+</div>
         </div>
-      </header>
-  </div>
 </template>
-
+<template name="updateRent">
+      <h3>{{rid}}</h3>
+</template>

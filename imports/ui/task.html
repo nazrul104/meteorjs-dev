@@ -1,0 +1,31 @@
+ <template name="allTask">
+  <div class="container">
+    <header>
+      <h1>Add Task</h1>
+       <form class="new-task">
+        <input type="text" class="form-control" name="text" placeholder="Type to add new tasks" />
+      </form>
+    </header>
+ 
+<div class="list-group">
+      {{#each tasks}}
+        {{> task}}
+      {{/each}}
+</div>
+  </div>
+</template>
+
+<template name="task">
+<div class="list-group-item"> 
+  <div class="row">
+      <div class="col-md-1"><input type="checkbox" checked="{{checked}}" class="toggle-checked" /></div>
+      <div class="col-md-10">{{text}}</div>
+      <div class="col-md-1">
+        <button  type="button" class="btn btn-danger">
+        <i class="glyphicon glyphicon-trash glyphicon "></i>
+      </button>
+      </div>
+  </div>
+</div>
+
+</template>

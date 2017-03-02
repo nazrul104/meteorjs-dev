@@ -4,14 +4,15 @@ import { Template } from 'meteor/templating';
 import { Tasks } from '../api/tasks.js';
 
 
-import './body.html';
+import './task.html';
  
  Template.body.onCreated(function bodyOnCreated() {
  this.state = new ReactiveDict();
   Meteor.subscribe('tasks');
 });
+ 
 if (Meteor.isClient) {
-Template.task1.helpers({
+Template.allTask.helpers({
   tasks() {
      return Tasks.find({userId:Meteor.userId()});
   },
@@ -20,7 +21,7 @@ Template.task1.helpers({
   },
 });
 
-Template.task1.events({
+Template.allTask.events({
   'submit .new-task'(event) {
     // Prevent default browser form submit
     event.preventDefault();
@@ -38,7 +39,7 @@ Template.task.events({
     // Set the checked property to the opposite of its current value
     Meteor.call('setChecked', this._id, !this.checked);
   },
-  'click .delete'() {
+  'click .btn-danger'() {
     Meteor.call('removeTask', this._id);
   },
 });

@@ -1,0 +1,49 @@
+<template name="signin">
+    <div class="container">
+      <p>Normal User: normal@example.com | apple1</p>
+      <p>View Secrets: view@example.com | apple1</p>
+      <p>Manage Users: manage@example.com | apple1</p>
+      <p>Admin User: admin@example.com | apple1</p>
+    </div>
+</template>
+
+<template name="loading">
+  <h1>Loading...</h1>
+</template>
+
+<template name="awaitingVerification">
+  <h1>Awaiting email verification...</h1>
+</template>
+
+<template name="not_found">
+  <h3>404 - Not found</h3>
+</template>
+
+<template name="invalid-access">
+  <h3>403 Forbidden - Invalid Access</h3>
+</template>
+
+<template name="navbar">
+  <nav class="navbar navbar-default">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="/">Meteorjs-demo</a>
+        {{#if currentUser}}
+        <ul class="nav navbar-nav navbar-right">
+        <li><a href="/">Home</a></li>
+          <li><a href="/task">Task List</a></li>
+          {{#if userRole admin}}
+          <li><a href="/manageUsers">User List</a></li>
+          {{/if}}
+      </ul>
+        {{/if}}
+        <ul class="nav navbar-nav navbar-right">
+          <li>{{> loginButtons}}</li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</template>
+<template name="start">
+        {{>rent}}
+</template>

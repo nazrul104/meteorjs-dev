@@ -1,0 +1,47 @@
+ <template name="rent">
+ <div class="container-full">
+ <h3>Your ads list: <a href="/addRent"  class="btn btn-primary">Add New</a></h3>
+
+<table id="my" class="table-condensed" style="border:2px;border-collapse: collapse;">
+<thead>
+	<tr style="background-color:#cdcdcd">
+		<th>Title</th>
+		<th>Description</th>
+		<th>Property type</th>
+		<th>Address</th>
+		<th>No of Guest</th>
+		<th>Rooms</th>
+		<th>From-To</th>
+		<th>In-Out</th>
+    <th>Actions</th>
+	</tr>
+</thead>
+<tbody>
+    {{#each AllRent}}
+    <tr>
+    	<td>{{post_title}}</td>
+    	<td>{{summary}}</td>
+    	<td>{{property_type}}</td>
+    	<td>{{address}} {{postcode}}</td>
+    	<td>{{Accommodates}}</td>
+    	<td>Bedrooms:{{Bedrooms}} , Beds:{{beds}} , Bathrooms:{{Bathrooms}}</td>
+    	<td>{{available_from}} - {{createdAt}}</td>
+    	<td>{{check_in}} - {{check_out}}</td>
+      <td>
+        <button  type="button" class="btn btn-danger" id="delete">
+        <i class="glyphicon glyphicon-trash"></i>
+        </button>
+
+         <a href="updateRent/{{_id}}" class="btn btn-primary" id="edit">
+        <i class="glyphicon glyphicon-edit"></i>
+        </a>
+
+      </td>
+    </tr>
+      {{/each}}
+      </tbody>
+</table>
+</div>
+
+</template>
+
