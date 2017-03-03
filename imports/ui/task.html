@@ -2,7 +2,7 @@
   <div class="container todomvc-wrapper">
    <section class="todoapp">
     <header  class="header">
-      <h1>Add Task</h1>
+      <h1>todo task</h1>
        <form class="new-task">
        <!--  <input type="text" class="form-control" name="text" placeholder="Type to add new tasks" /> -->
          <input class="new-todo" placeholder="What needs to be done?" autofocus="" name="text">
@@ -17,53 +17,13 @@
       </section>
  </section>
   </div>
-<!--   <section class="todoapp">
- <header class="header">
-    <h1>todos</h1>
-    <input class="new-todo" placeholder="What needs to be done?" autofocus="" name="newTodo">
- </header>
- <section class="main" style="visibility: visible;">
-    <input class="toggle-all" type="checkbox" name="toggle"><label for="toggle-all">Mark all as complete</label>
-    <ul class="todo-list">
-       <li class="completed">
-          <div class="view"><input class="toggle" type="checkbox"><label>asfsaf</label><button class="destroy"></button></div>
-          <input class="edit" name="title" id="todo-3">
-       </li>
-       <li class="completed">
-          <div class="view"><input class="toggle" type="checkbox"><label>kasfjasf</label><button class="destroy"></button></div>
-          <input class="edit" name="title" id="todo-4">
-       </li>
-       <li class="">
-          <div class="view"><input class="toggle" type="checkbox"><label>,asfdn,asdf</label><button class="destroy"></button></div>
-          <input class="edit" name="title" id="todo-5">
-       </li>
-       <li class="">
-          <div class="view"><input class="toggle" type="checkbox"><label>sadfsaf</label><button class="destroy"></button></div>
-          <input class="edit" name="title" id="todo-6">
-       </li>
-       <li class="">
-          <div class="view"><input class="toggle" type="checkbox"><label>safnslkadf</label><button class="destroy"></button></div>
-          <input class="edit" name="title" id="todo-7">
-       </li>
-    </ul>
- </section>
- <footer class="footer">
-    <span class="todo-count"><strong>3</strong> items left</span>
-    <ul class="filters">
-       <li><a href="#/" class="selected">All</a></li>
-       <li><a href="#/active" class="">Active</a></li>
-       <li><a href="#/completed" class="">Completed</a></li>
-    </ul>
-    <button class="clear-completed">Clear completed (2)</button>
- </footer>
-</section> -->
 </template>
 
 <template name="task">
    <li class="" id="{{_id}}">
      <div class="view">
       <input class="toggle" type="checkbox" checked="{{checked}}">
-      <label>{{text}}</label>
+      <label>{{text}} </label>
       <button class="destroy"> <i class="glyphicon glyphicon-trash glyphicon "></i></button>
      </div>
 

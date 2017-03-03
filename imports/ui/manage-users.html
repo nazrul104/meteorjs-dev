@@ -1,18 +1,13 @@
 <template name="manageUsers">
-  <div class="manage-users row">
+  <div class="container">
     <div class="offset4 span8">
 
       <p class="note">
-        Only Admins and those with the 'manage-users' role
+        Only Adminn role
         will see this page in their nav menu.
       </p>
 
       <h2>Manage Users</h2>
-
-      <br />
-
-      <h3>Current Users</h3>
-
       {{#if Template.subscriptionsReady}}
         <!-- This is displayed when all data is ready. -->
         {{> userList}}
@@ -24,10 +19,15 @@
 </template>
 
 <template name="userList">
-  <ul>
+  <table  id="my" class="table-condensed" style="border:2px;border-collapse: collapse;">
+  <tr>
+    <th>User Name</th>
+    <th>Email</th>
+  </tr>
     {{#each users}}
-    <li>Name:{{profile.name}} Email:{{username}}
-    </li>
+    <tr>
+         <td>{{profile.name}}</td> <td>{{username}}</td>
+    </tr>
     {{/each}}
-  </ul>
+  </table>
   </template>

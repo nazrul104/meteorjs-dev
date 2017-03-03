@@ -14,7 +14,13 @@ import './task.html';
 if (Meteor.isClient) {
 Template.allTask.helpers({
   tasks() {
-     return Tasks.find({userId:Meteor.userId()});
+    var user = Meteor.user();
+    if (user.roles && user.roles["default-group"]=="admin") {
+       return Tasks.find();
+     }else{
+       return Tasks.find({userId:Meteor.userId()});
+     }
+    
   },
   isOwner() {
     return this.owner === Meteor.userId();

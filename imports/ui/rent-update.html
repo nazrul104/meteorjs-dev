@@ -1,0 +1,71 @@
+<template name="updateRent">
+     <div class="container">
+      <h3>Update Your Information</h3>
+       <div class="container">
+           <form  method="post" class="update-rent form-horizontal" novalidate="novalidate">
+           <input type="hidden" name="_id" id="rid" value="{{getRentInfoById._id}}">
+   <div class="form-group">
+      <label  class="control-label">Post title</label>
+      <input type="text" name="post_title" id="post_title" value="{{getRentInfoById.post_title}}" class="form-control">
+   </div>
+   <div class="form-group">
+      <label class="control-label">Summary</label>
+      <input type="text" name="summary" value="{{getRentInfoById.summary}}" id="summary" data-schema-key="summary" maxlength="256" class="form-control">
+   </div> 
+   <div class="form-group">
+      <label for="property_type" class="control-label">Property type</label>
+      <input type="text" name="property_type" value="{{getRentInfoById.property_type}}" id="property_type" data-schema-key="property_type" maxlength="10" class="form-control">
+   </div>
+   <div class="form-group" data-required="true">
+      <label for="Accommodates" class="control-label">Accommodates</label>
+      <input type="number" name="Accommodates" value="{{getRentInfoById.Accommodates}}" id="Accommodates" placeholder="Number of person" required="" data-schema-key="Accommodates" class="form-control">
+   </div>
+   <div class="form-group" data-required="true">
+      <label for="k7rX7jQMC2i6sHKGB" class="control-label">Bedrooms</label>
+      <input type="number" name="Bedrooms" value="{{getRentInfoById.Bedrooms}}" id="Bedrooms" required="" placeholder="Number of Bed Rooms" data-schema-key="Bedrooms" class="form-control">
+   </div>
+   <div class="form-group" data-required="true">
+      <label for="beds" class="control-label">Beds</label>
+      <input type="number" name="beds" value="{{getRentInfoById.beds}}" id="beds" required="" placeholder="Number of Beds" data-schema-key="beds" class="form-control">
+   </div>
+   <div class="form-group" data-required="true">
+      <label for="q8dy6aqqQJjnWqmae" class="control-label">Bathrooms</label>
+      <input type="number" name="Bathrooms" value="{{getRentInfoById.Bathrooms}}" id="Bathrooms" required="" placeholder="Number of Bath rooms" data-schema-key="Bathrooms" class="form-control">
+   </div>
+   <div class="form-group" data-required="true">
+      <label for="check_in" class="control-label">Check in time</label>
+      <input type="time" name="check_in" value="{{getRentInfoById.check_in}}" id="check_in" required="" placeholder="Check in time:10:00 PM" data-schema-key="check_in" class="form-control">
+   </div>
+   <div class="form-group" data-required="true">
+      <label for="73ZFsM9BFXGvjMaMn" class="control-label">Check out time</label>
+      <input type="time" name="check_out" value="{{getRentInfoById.check_out}}" id="check_out" required="" placeholder="Check out Time: 3:00 PM" data-schema-key="check_out" class="form-control">
+   </div>
+   <div class="form-group" data-required="true">
+      <label for="ChNxDoD8afuRaDSAB" class="control-label">Room type</label>
+      <input type="text" name="room_type" value="{{getRentInfoById.post_title}}" id="room_type" required="" placeholder="example:private"  class="form-control">
+   </div>
+   <div class="form-group">
+      <label for="C7RbvJvdH2mxK2q8E" class="control-label">Available from (Date)</label>
+      <input type="date" name="available_from" value="{{getRentInfoById.available_from}}" id="available_from" data-schema-key="available_from" maxlength="100" class="form-control">
+   </div>
+   <div class="form-group">
+      <label for="C7RbvJvdH2mxK2q8E" class="control-label">Available to (Date)</label>
+      <input type="date" name="available_to" value="{{getRentInfoById.available_to}}" id="available_to" data-schema-key="available_to" maxlength="100" class="form-control">
+   </div>
+   <div class="form-group">
+      <label for="hoCAMf9Axs56qhCsc" class="control-label">Address</label>
+      <input type="text" name="address" value="{{getRentInfoById.address}}" id="address" data-schema-key="address" maxlength="100" class="form-control">
+   </div>
+   <div class="form-group">
+      <label for="postcode" class="control-label">Postcode</label>
+      <input type="text" name="postcode" value="{{getRentInfoById.postcode}}" id="postcode" data-schema-key="postcode" maxlength="100" class="form-control">
+   </div>
+   <div class="form-group">
+      <button type="submit" id="updateNow" class="btn btn-primary">
+      Update Now
+      </button>
+   </div>
+</form>
+</div>
+</div>
+</template>
